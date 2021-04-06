@@ -7,29 +7,38 @@ var gameOver, restart, gameOverImage, restartImage;
 var score = 0;
 var cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
+let gravity = 1
 //var score;
 function preload() {
-	trex_running = loadAnimation("assets/Screen Shot 2021-04-05 at 8.47.52 PM.png");
+	trex_running = loadAnimation("assets/Teacher.jpeg");
 	trex_collided = loadImage("assets/trex_collided.png");
 	restartImage = loadImage("assets/restart.png");
 	gameOverImage = loadImage("assets/gameOver.png");
 	groundImage = loadImage("assets/ground2.png");
 	cloudImage = loadImage("assets/cloud.png");
-	obstacle1 = loadImage("assets/obstacle1.png");
-	obstacle2 = loadImage("assets/obstacle2.png");
-	obstacle3 = loadImage("assets/obstacle3.png");
-	obstacle4 = loadImage("assets/obstacle4.png");
-	obstacle5 = loadImage("assets/obstacle5.png");
-	obstacle6 = loadImage("assets/obstacle6.png");
+	obstacle1 = loadImage("assets/hack.png");
+	obstacle2 = loadImage("assets/BossBaby.jpeg");
+	obstacle3 = loadImage("assets/turtle-game-obstacle-gif-animation_still_2x.webp");
+	obstacle4 = loadImage("assets/brawl-stars-video-games-beat-em-up-single-player-video-game-png-favpng-dAk8jAPJEb0CtVqV5NAC4Sgqc-removebg-preview.png");
+	obstacle5 = loadImage("assets/download.jpeg");
+	obstacle6 = loadImage("assets/stone.png");
 	sound = loadSound('assets/Children Yay!   Sound Effect.mp4');
+	song = loadSound('assets/y2mate.com - 50 Cent  Candy Shop CLEAN HQ_1080p.mp4')
 }
 
 function setup() {
-	createCanvas(600, 200);
-	trex = createSprite(50, 180, 20, 50);
+	createCanvas(2000, 500);
+	trex = createSprite(50, 170, 20, 50);
 	trex.addAnimation("running", trex_running);
-	trex.scale = 0.1;
-	ground = createSprite(200, 180, 400, 20);
+	trex.scale = 0.14;
+	trex.gravity;
+	obstacle1.resize(100, 100);
+	obstacle2.resize(100, 100);
+	obstacle3.resize(100, 200);
+	obstacle4.resize(100, 100);
+	obstacle5.resize(100, 100);
+	obstacle6.resize(100, 100);
+	ground = createSprite(2000, 180, 400, 20);
 	ground.addImage("ground", groundImage);
 	ground.x = ground.width / 2;
 	ground.velocityX = -(4 + 3 * score / 100);
@@ -52,10 +61,13 @@ function draw() {
 	text("Score: " + score, 500, 50);
 	if (gameState == PLAY) {
 		score = score + Math.round(getFrameRate() / 60);
-		if (keyDown("space")) {
+		
+		if (keyDown("space") && trex.y >= 100) {
 			trex.velocityY = -10;
+			
 		}
-		trex.velocityY = trex.velocityY + 0.8
+		trex.velocityY = trex.velocityY + 0.8;
+		
 		if (ground.x < 0) {
 			ground.x = ground.width / 2;
 		}
@@ -82,7 +94,7 @@ function draw() {
 	if (mousePressedOver(restart)) {
 		reset();
 	}
-	if (mousePressedOver(restart) || score >= 300) {
+	if (score >= 1000) {
 		reset2()
 	}
 	textSize(22);
@@ -160,5 +172,5 @@ function reset2() {
 	sound.play();
 	sound.noLoop();
 	obstaclesGroup.destroyEach();
-
 }
+
