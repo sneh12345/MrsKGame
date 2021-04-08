@@ -15,7 +15,7 @@ function preload() {
 	restartImage = loadImage("assets/restart.png");
 	gameOverImage = loadImage("assets/gameOver.png");
 	groundImage = loadImage("assets/ground2.png");
-	cloudImage = loadImage("assets/cloud.png");
+	cloudImage = loadImage("assets/Cloud_russia-removebg-preview.png");
 	obstacle1 = loadImage("assets/hack.png");
 	obstacle2 = loadImage("assets/BossBaby.jpeg");
 	obstacle3 = loadImage("assets/turtle-game-obstacle-gif-animation_still_2x.webp");
@@ -31,10 +31,9 @@ function setup() {
 	trex = createSprite(50, 170, 20, 50);
 	trex.addAnimation("running", trex_running);
 	trex.scale = 0.14;
-	trex.gravity;
 	obstacle1.resize(100, 100);
 	obstacle2.resize(100, 100);
-	obstacle3.resize(100, 200);
+	obstacle3.resize(100, 100);
 	obstacle4.resize(100, 100);
 	obstacle5.resize(100, 100);
 	obstacle6.resize(100, 100);
@@ -98,7 +97,7 @@ function draw() {
 		reset2()
 	}
 	textSize(22);
-	text('Mrs K, survive all the obstacles, and save the students!', 10, 30);
+	text('Mrs K, survive all the obstacles, and give the students the best education!', 10, 30);
 	drawSprites();
 }
 
